@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <title>FORMULARIO 25</title>
+</head>
+<body>
+  <form>
+    <fieldset class="contact">
+    <legend>Información de contacto</legend>
+    <div class="contact_imput">
+      <label for="nombreCom">Nombre completo</label>
+      <input type="text" name="nombre completo" id="nombreCom" placeholder="Requerido" required>
+    </div>
+    <div class="contact_imput">
+      <label for="email" >Email</label>
+      <input type="email" name="email" id="email" placeholder="Requerido" required>
+    </div>
+    <div class="contact_imput">
+      <label for="numTel">Número teléfono</label>
+      <input type="text" name="numero telefono" id="numTel">
+    </div>
+    <label for="direcc">Dirección</label>
+    <input type="text" name="direccion" id="direcc">
+
+    <label for="ciu">Ciudad</label>
+    <input type="text" name="ciudad" id="ciu">
+
+    <label for="communities">Autonomous communities</label>
+                    <select name="communities" id="communities">
+                        <option value="0" selected disabled hidden>Choose your option</option>
+                        <option value="Andalucí­a">Andalucí­a</option>
+                        <option value="Aragón">Aragón</option>
+                        <option value="Principado de Asturias">Principado de Asturias</option>
+                        <option value="Islas Baleares">Islas Baleares</option>
+                        <option value="País Vasco">Paí­s Vasco</option>
+                        <option value="Islas Canarias">Islas Canarias</option>
+                        <option value="Cantabria">Cantabria</option>
+                        <option value="Castilla-La Mancha">Castilla-La Mancha</option>
+                        <option value="Castilla y León">Castilla y León</option>
+                        <option value="Cataluña">Cataluña</option>
+                        <option value="Extremadura">Extremadura</option>
+                        <option value="Galicia">Galicia</option>
+                        <option value="Comunidad de Madrid">Comunidad de Madrid</option>
+                        <option value="Región de Murcia">Región de Murcia</option>
+                        <option value="Comunidad Foral de Navarra">Comunidad Foral de Navarra</option>
+                        <option value="La Rioja">La Rioja</option>
+                        <option value="Comunidad Valenciana">Comunidad Valenciana</option>
+                        <option value="Ceuta">Ceuta</option>
+                        <option value="Melilla">Melilla</option>
+                    </select><br>
+    <div class="contact_input">
+    <label for="cp">Código Postal</label>
+    <input type="text" name="c.postal" id="cp">
+    </div>
+    </fieldset>
+    <hr>
+    <fieldset class="news radio checkbox">
+    <legend>Boletín informativo</legend>
+
+    <label>Elije las occiones para recibir novedades:</label>
+
+    <label><input type="checkbox" name="html">HTML</label>
+    <label><input type="checkbox" name="css">CSS</label>
+    <label><input type="checkbox" name="javascript">JAVASCRIPT</label>
+
+    <label>Formato del boletín:<label><br><br>
+
+    <input type="radio" id="html" name="formato" value="HTML">
+    <label for="html">HTML</label><br>
+    <input type="radio" id="plainText" name="formato" value="PLAINTEXT">
+    <label for="plainText">Plain text</label><br>
+    
+    <label for="mensaje">Otros tópicos que ha escuchado:</label><br><br>
+    <textarea name="mensaje" id="mensaje"></textarea>
+    </fieldset>
+
+    <button type="submit" name="enviar">Enviar</button>
+  </form>
+
+  <footer>
+    <p>Copyright The Code Review</p>
+  </footer>
+</body>
+</html>

@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/normalize.css">
-  <title>FORMULARIO 25</title>
+  <title>INDEX</title>
 </head>
 <body>
   <form>
@@ -25,15 +25,18 @@
       <label for="numTel">Número teléfono</label>
       <input type="text" name="numero telefono" id="numTel">
     </div>
+    <div class="contact_imput">
     <label for="direcc">Dirección</label>
     <input type="text" name="direccion" id="direcc">
-
+    </div>
+    <div class="contact_imput">
     <label for="ciu">Ciudad</label>
-    <input type="text" name="ciudad" id="ciu">
-
-    <label for="communities">Autonomous communities</label>
+    <input type="text" name="ciudad" id="ciu"><br>
+    </div>
+    <div class="contact_imput">
+    <label for="communities">Autonomous communities</label><br><br>
                     <select name="communities" id="communities">
-                        <option value="0" selected disabled hidden>Choose your option</option>
+                        <option value="0" selected disabled hidden>Elije una opción</option>
                         <option value="Andalucí­a">Andalucí­a</option>
                         <option value="Aragón">Aragón</option>
                         <option value="Principado de Asturias">Principado de Asturias</option>
@@ -53,7 +56,7 @@
                         <option value="Comunidad Valenciana">Comunidad Valenciana</option>
                         <option value="Ceuta">Ceuta</option>
                         <option value="Melilla">Melilla</option>
-                    </select><br>
+                    </select><br></div>
     <div class="contact_input">
     <label for="cp">Código Postal</label>
     <input type="text" name="c.postal" id="cp">
@@ -63,11 +66,14 @@
     <fieldset class="news radio checkbox">
     <legend>Boletín informativo</legend>
 
-    <label>Elije las occiones para recibir novedades:</label>
+    <label>Elije las occiones para recibir novedades:</label><br><br>
 
-    <label><input type="checkbox" name="html">HTML</label>
-    <label><input type="checkbox" name="css">CSS</label>
-    <label><input type="checkbox" name="javascript">JAVASCRIPT</label>
+    <input id="newshtml" type="checkbox" value="HTML">
+    <label for="newshtml">HTML News</label><br><br>
+    <input id="newscss" type="checkbox" value="CSS">
+    <label for="newscss">CSS News</label><br><br>
+    <input id="newsjs" type="checkbox" value="JS">
+    <label for="newsjs">Javascript News</label><br><br>
 
     <label>Formato del boletín:<label><br><br>
 
@@ -80,7 +86,8 @@
     <textarea name="mensaje" id="mensaje"></textarea>
     </fieldset>
 
-    <button type="submit" name="enviar">Enviar</button>
+    <button type="submit">Enviar</button>
+    <button type="reset">Resetear</button>
   </form>
 
   <footer>

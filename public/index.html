@@ -10,12 +10,12 @@
   <title>INDEX</title>
 </head>
 <body>
-  <form>
+  <form action="../modules/include/news_reg.php" method="post">
     <fieldset class="contact">
     <legend>Información de contacto</legend>
     <div class="contact_imput">
       <label for="nombreCom">Nombre completo</label>
-      <input type="text" name="nombre completo" id="nombreCom" placeholder="Requerido" required>
+      <input type="text" name="nombre_completo" id="nombreCom" placeholder="Requerido" required>
     </div>
     <div class="contact_imput">
       <label for="email" >Email</label>
@@ -23,7 +23,7 @@
     </div>
     <div class="contact_imput">
       <label for="numTel">Número teléfono</label>
-      <input type="text" name="numero telefono" id="numTel">
+      <input type="text" name="numero_telefono" id="numTel">
     </div>
     <div class="contact_imput">
     <label for="direcc">Dirección</label>
@@ -35,7 +35,7 @@
     </div>
     <div class="contact_imput">
     <label for="communities">Autonomous communities</label><br><br>
-                    <select name="communities" id="communities">
+                    <select name="comunidades" id="communities">
                         <option value="0" selected disabled hidden>Elije una opción</option>
                         <option value="Andalucí­a">Andalucí­a</option>
                         <option value="Aragón">Aragón</option>
@@ -59,7 +59,7 @@
                     </select><br></div>
     <div class="contact_input">
     <label for="cp">Código Postal</label>
-    <input type="text" name="c.postal" id="cp">
+    <input type="text" name="c_postal" id="cp">
     </div>
     </fieldset>
     <hr>
@@ -68,11 +68,11 @@
 
     <label>Elije las occiones para recibir novedades:</label><br><br>
 
-    <input id="newshtml" type="checkbox" value="HTML">
+    <input id="newshtml" type="checkbox" name="check" value="HTML">
     <label for="newshtml">HTML News</label><br><br>
-    <input id="newscss" type="checkbox" value="CSS">
+    <input id="newscss" type="checkbox" name="check" value="CSS">
     <label for="newscss">CSS News</label><br><br>
-    <input id="newsjs" type="checkbox" value="JS">
+    <input id="newsjs" type="checkbox" name="check" value="JS">
     <label for="newsjs">Javascript News</label><br><br>
 
     <label>Formato del boletín:<label><br><br>

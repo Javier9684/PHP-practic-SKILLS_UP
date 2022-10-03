@@ -3,6 +3,7 @@
    
     //varibles que se van a usar en el formulario
     $nombre_completo=$email=$numero_telefono=$direccion=$ciudad=$comunidades=$c_postal=$check=$formato=$mensaje="";
+    $nombre_err=$email_err=$telefono_err=false;
 
     function limpiarDatos($datos) {
         $datos=trim($datos);
@@ -46,11 +47,30 @@
             $nombre_completo=limpiarDatos($_POST["nombre_completo"]);
             $email=limpiarDatos($_POST["email"]);
             $numero_telefono=limpiarDatos($_POST["numero_telefono"]);
-            echo "<br><strong>Nombre: </strong>" . $nombre_completo . "<br>";
-            echo "<strong>Email: </strong>" . $email . "<br>";
-            echo "<strong>Telefono: </strong>" . $numero_telefono . "<br>";
 
-            if (isset($_POST["direccion"])) {
+            //comprobar si valida estas variables
+            if (validarNombre($nombre_completo)) {
+                echo "<script>console.log ('nombre es valido.')</script><br>";
+            } else {
+                $nombre_err=true;
+            }
+
+            if (validarEmail($email)) {
+                echo "<script>console.log ('email es valido.')</script><br>";
+            } else {
+                $email_err=true;
+            }
+
+            if (validarTelefono($numero_telefono)) {
+                echo "<script>console.log ('telefono es valido.')</script><br>";
+            } else {
+                $telefono_err=true;
+            }
+
+            //condicion que si no se cumple para el codigo
+            if (validarNombre($nombre_completo) || validarEmail($email) || validarTelefono($numero_telefono)) {
+
+             if (isset($_POST["direccion"])) {
                 $direccion=limpiarDatos($_POST["direccion"]);
             } else {
                 $direccion=null;
@@ -70,40 +90,20 @@
             } else {
                 $c_postal=null;
             }
-            if (isset($_POST["check"])) {
-                $check=limpiarDatos($_POST["check"]);
-            } else {
-                $check=null;
-            }
-            if (isset($_POST["formato"])) {
-                $formato=limpiarDatos($_POST["formato"]);
-            } else {
-                $formato=null;
-            }
-            if (isset($_POST["mensaje"])) {
-                $mensaje=limpiarDatos($_POST["mensaje"]);
-            } else {
-                $mensaje=null;
-            }
-            
-            //comprobar si valida estas variables
-            if (validarNombre($nombre_completo)) {
-                echo "validado";
-            } else {
-                echo "no valida";
-            }
 
-            if (validarEmail($email)) {
-                echo "validado";
             } else {
-                echo "no valida";
+            if ($nombre_err==true) {
+              echo "la validacion de nombre ha fallado";
+            } else if ($email_err==true) {
+              echo "la validacion de email ha fallado";
+            } else if ($telefono_err==true) {
+              echo "la validacion de telefono ha fallado";
             }
-
-            if (validarTelefono($numero_telefono)) {
-                echo "validado";
-            } else {
-                echo "no valida";
             }
+        } else {
+            echo "uno de los datos requeridos no ha sido rellenado";
         }
+    } else {
+        echo "el metodo post no ha llegado";
     }
 ?>

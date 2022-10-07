@@ -13,7 +13,7 @@
     } 
 
      //nombre, email, telefono (validaciones)
-     function validarNombre($nombre_completo) {
+    function validarNombre($nombre_completo) {
         if (!preg_match("/^[a-zA-Z-' ]*$/", $nombre_completo)) {
             return false;
         } else {
@@ -70,35 +70,62 @@
             //condicion que si no se cumple para el codigo
             if (validarNombre($nombre_completo) || validarEmail($email) || validarTelefono($numero_telefono)) {
 
-             if (isset($_POST["direccion"])) {
-                $direccion=limpiarDatos($_POST["direccion"]);
-            } else {
-                $direccion=null;
-            }
-            if (isset($_POST["ciudad"])) {
-                $ciudad=limpiarDatos($_POST["ciudad"]);
-            } else {
-                $ciudad=null;
-            }
-            if (isset($_POST["comunidades"])) {
-                $comunidades=limpiarDatos($_POST["comunidades"]);
-            } else {
-                $comunidades=null;
-            }
-            if (isset($_POST["c_postal"])) {
-                $c_postal=limpiarDatos($_POST["c_postal"]);
-            } else {
-                $c_postal=null;
-            }
+                if (isset($_POST["direccion"])) {
+                    $direccion=limpiarDatos($_POST["direccion"]);
+                } else {
+                    $direccion=null;
+                }
+                if (isset($_POST["ciudad"])) {
+                    $ciudad=limpiarDatos($_POST["ciudad"]);
+                } else {
+                    $ciudad=null;
+                }
+                if (isset($_POST["comunidades"])) {
+                    $comunidades=limpiarDatos($_POST["comunidades"]);
+                } else {
+                    $comunidades=null;
+                }
+                if (isset($_POST["c_postal"])) {
+                    $c_postal=limpiarDatos($_POST["c_postal"]);
+                } else {
+                    $c_postal=null;
+                }
+                if (isset($_POST["check"])) {
+                    $check=limpiarDatos($_POST["check"]);
+                } else {
+                    $check=1;
+                }
+                if (isset($_POST["formato"])) {
+                    $formato=limpiarDatos($_POST["formato"]);
+                } else {
+                    $formato=null;
+                }
+                if (isset($_POST["mensaje"])) {
+                    $mensaje=limpiarDatos($_POST["mensaje"]);
+                } else {
+                    $mensaje=null;
+                }
+
+                //-------------------------BORRAR---------------------------------
+                echo "<br><stronge>Nombre:</strong> $nombre_completo <br>";
+                echo "<br><stronge>Email:</strong> $email <br>";
+                echo "<br><stronge>Telefono:</strong> $numero_telefono <br>";
+                echo "<br><stronge>Direccion:</strong> $direccion <br>";
+                echo "<br><stronge>Ciudad:</strong> $ciudad <br>";
+                echo "<br><stronge>Comunidades:</strong> $comunidades <br>";
+                echo "<br><stronge>C.Postal:</strong> $c_postal <br>";
+                echo "<br><stronge>Check(string):</strong> $check <br>";
+                echo "<br><stronge>Formato:</strong> $formato <br>";
+                echo "<br><stronge>Mensaje:</strong> $mensaje <br>";
 
             } else {
-            if ($nombre_err==true) {
-              echo "la validacion de nombre ha fallado";
-            } else if ($email_err==true) {
-              echo "la validacion de email ha fallado";
-            } else if ($telefono_err==true) {
-              echo "la validacion de telefono ha fallado";
-            }
+                if ($nombre_err==true) {
+                    echo "la validacion de nombre ha fallado";
+                } else if ($email_err==true) {
+                    echo "la validacion de email ha fallado";
+                } else if ($telefono_err==true) {
+                    echo "la validacion de telefono ha fallado";
+                }
             }
         } else {
             echo "uno de los datos requeridos no ha sido rellenado";

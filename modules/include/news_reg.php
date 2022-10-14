@@ -75,31 +75,45 @@
                 } else {
                     $direccion=null;
                 }
+                
                 if (isset($_POST["ciudad"])) {
                     $ciudad=limpiarDatos($_POST["ciudad"]);
                 } else {
                     $ciudad=null;
                 }
+                
                 if (isset($_POST["comunidades"])) {
                     $comunidades=limpiarDatos($_POST["comunidades"]);
                 } else {
                     $comunidades=null;
                 }
+                
                 if (isset($_POST["c_postal"])) {
                     $c_postal=limpiarDatos($_POST["c_postal"]);
                 } else {
                     $c_postal=null;
                 }
-                if (isset($_POST["check"])) {
-                    $check=limpiarDatos($_POST["check"]);
-                } else {
-                    $check=1;
-                }
+                
+                $check=filter_input (
+                    INPUT_POST, 'check', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY
+                );
+
+                var_dump($check);
+                
+                
+                $string = implode(", ", $check);
+                echo $string;
+                echo "<br>";
+                
                 if (isset($_POST["formato"])) {
                     $formato=limpiarDatos($_POST["formato"]);
-                } else {
-                    $formato=null;
+                    if ($check=="HTML") {
+                        $check=0;
+                    } else {    
+                        $check=1;
+                    }
                 }
+                
                 if (isset($_POST["mensaje"])) {
                     $mensaje=limpiarDatos($_POST["mensaje"]);
                 } else {
@@ -114,7 +128,7 @@
                 echo "<br><stronge>Ciudad:</strong> $ciudad <br>";
                 echo "<br><stronge>Comunidades:</strong> $comunidades <br>";
                 echo "<br><stronge>C.Postal:</strong> $c_postal <br>";
-                echo "<br><stronge>Check(string):</strong> $check <br>";
+                echo "<br><stronge>Noticia:</strong> $check <br>";
                 echo "<br><stronge>Formato:</strong> $formato <br>";
                 echo "<br><stronge>Mensaje:</strong> $mensaje <br>";
 

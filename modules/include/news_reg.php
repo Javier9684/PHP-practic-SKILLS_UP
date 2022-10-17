@@ -4,6 +4,7 @@
     //varibles que se van a usar en el formulario
     $nombre_completo=$email=$numero_telefono=$direccion=$ciudad=$comunidades=$c_postal=$check=$formato=$mensaje="";
     $nombre_err=$email_err=$telefono_err=false;
+    $checkeado;
 
     function limpiarDatos($datos) {
         $datos=trim($datos);
@@ -99,7 +100,37 @@
                 );
 
                 var_dump($check);
+                $lengArry = count($check);
                 
+                switch ($lengArry) {
+                    case 1:
+                        if ($check[0] == "HTML") {
+                                $checkeado = 100;
+                        } elseif ($check[0] == "CSS") {
+                                $checkeado = 010;
+                        } else {
+                                $checkeado = 001;
+                        }
+                        break;
+                    case 2:
+                        if ($check[0] != "HTML") {
+                                $checkeado = 011;
+                        } elseif ($check[0] != "CSS") {
+                                $checkeado = 101;
+                        } else {
+                                $checkeado = 110;
+                        }
+                        break;
+                    case 3:
+                        $checkeado = 111;
+                        break;
+                    default:
+                        $checkeado = 100;
+                }
+
+                echo "<br>Valor a devolver: <strong>" . $checkeado . " </strong>";
+                
+                echo "<br>";
                 
                 $string = implode(", ", $check);
                 echo $string;
@@ -132,6 +163,10 @@
                 echo "<br><stronge>Formato:</strong> $formato <br>";
                 echo "<br><stronge>Mensaje:</strong> $mensaje <br>";
 
+                //SELECT nombre, email, telefono from news_reg WHERE $nombre_completo="nombre", $email="email", $numero_telefono="telefono";
+                
+                //INSERT INTO nombre, email, telefono, direccion, ciudad, comunidades, c.postal, noticia, formato, mensaje VALUES($nombre_completo, $email, $numero_telefono, $direccion, $ciudad, $comunidades, $c_postal, $checkeado, $formato, $mensaje)
+            
             } else {
                 if ($nombre_err==true) {
                     echo "la validacion de nombre ha fallado";

@@ -105,27 +105,27 @@
                 switch ($lengArry) {
                     case 1:
                         if ($check[0] == "HTML") {
-                                $checkeado = 100;
+                                $checkeado = bindec('100');
                         } elseif ($check[0] == "CSS") {
-                                $checkeado = 010;
+                                $checkeado = bindec('010');
                         } else {
-                                $checkeado = 001;
+                                $checkeado = bindec('001');
                         }
                         break;
                     case 2:
                         if ($check[0] != "HTML") {
-                                $checkeado = 011;
-                        } elseif ($check[0] != "CSS") {
-                                $checkeado = 101;
+                                $checkeado = bindec('011');
+                        } elseif ($check[0] != "CSS" && $check[1] == "JS") {
+                                $checkeado = bindec('101');
                         } else {
-                                $checkeado = 110;
+                                $checkeado = bindec('110');
                         }
                         break;
                     case 3:
-                        $checkeado = 111;
+                        $checkeado = bindec('111');
                         break;
                     default:
-                        $checkeado = 100;
+                        $checkeado = bindec('100');
                 }
 
                 echo "<br>Valor a devolver: <strong>" . $checkeado . " </strong>";
@@ -163,10 +163,49 @@
                 echo "<br><stronge>Formato:</strong> $formato <br>";
                 echo "<br><stronge>Mensaje:</strong> $mensaje <br>";
 
-                //SELECT nombre, email, telefono from news_reg WHERE $nombre_completo="nombre", $email="email", $numero_telefono="telefono";
+                try {
+                    $sql = "SELECT * FROM news_reg WHERE fullname = :fullname OR email = :email OR phone = :phone";
                 
-                //INSERT INTO nombre, email, telefono, direccion, ciudad, comunidades, c.postal, noticia, formato, mensaje VALUES($nombre_completo, $email, $numero_telefono, $direccion, $ciudad, $comunidades, $c_postal, $checkeado, $formato, $mensaje)
-            
+                    $stmt = $conn->prepare($sql);
+
+                    $stmt->bindParam(":fullname", $nombre_completo, PDO::PARAM_STR);
+                    $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+                    $stmt->bindParam(":phone", $numero_telefono, PDO::PARAM_STR);
+
+                    $stmt->execute();
+                    $resultado = $stmt->fetchAll();
+                    echo "resultado es: " . var_dump($resultado) . "<br>";
+                   
+                    if ($resultado) {
+                        echo "La informacion existe<br>";
+                    } else {
+                        try {
+                            $sql = "INSERT INTO news_reg (fullname, email, phone, address, city, state, zipcode, newsletters, format_news, suggestion) VALUES (:fullname, :email, :phone, :address, :city, :state, :zipcode, :newsletters, :format_news, :suggestion)";
+                            $stmt = $conn->prepare($sql);
+                            $stmt->bindParam(':fullname', $nombre_completo, PDO::PARAM_STR);
+                            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+                            $stmt->bindParam(':phone', $numero_telefono, PDO::PARAM_STR);
+                            $stmt->bindParam(':address', $direccion, PDO::PARAM_STR);
+                            $stmt->bindParam(':city', $ciudad, PDO::PARAM_STR);
+                            $stmt->bindParam(':state', $comunidades, PDO::PARAM_STR);
+                            $stmt->bindParam(':zipcode', $c_postal, PDO::PARAM_STR);
+                            $stmt->bindParam(':newsletters', $checkeado, PDO::PARAM_INT);
+                            $stmt->bindParam(':format_news', $formato, PDO::PARAM_INT);
+                            $stmt->bindParam(':suggestion', $mensaje, PDO::PARAM_STR);
+
+                            $stmt->execute();
+                            echo "Nuevo usuario registrado exitosamente<br>";
+                        } catch (PDOException $e) {
+                            echo $sql . "<br>" . $e->getMessage();
+                        }
+                        $sconn = null;
+                    }
+
+                    } catch (PDOException $e) {
+                        echo $sql . "<br>" . $e->getMessage();
+                    }
+                
+
             } else {
                 if ($nombre_err==true) {
                     echo "la validacion de nombre ha fallado";

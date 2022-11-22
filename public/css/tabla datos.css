@@ -1,0 +1,43 @@
+@font-face { 
+    font-family: 'Inter';
+    src: url('Inter-VariableFont_slntwght.ttf');
+    font-style: normal;
+    font-weight: normal;
+}
+
+* {
+	margin:0;
+	padding: 0;
+	box-sizing: border-box;
+    font-family: 'Inter';
+}
+
+button {
+    background-color: #1f1ca1;
+    color: #ffffff;
+    border-radius: 5px;
+    margin: 2% 0 1% 45%;
+    width: 15%;
+    height: 3.5em;
+    font-size: 1.5em;
+}
+
+table {
+    margin: 0 auto;
+    background-color: rgba(141, 148, 155, 0.7); 
+    border-collapse: collapse;
+}
+
+th {
+    background-color: white;
+    border: black 1.5px solid;
+    font-size: 1.3em;
+    padding: 0.5em;
+}
+
+td {
+    color: rgba(12, 7, 245, 1);
+    border: black 1.5px solid;
+    font-size: 1em;
+    padding: 0.5em;
+}
